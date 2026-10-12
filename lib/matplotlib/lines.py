@@ -29,6 +29,19 @@ from .markers import (  # noqa
 
 _log = logging.getLogger(__name__)
 
+linestyle_doc = """\
+      =======================================================  ================
+      linestyle                                                description
+      =======================================================  ================
+      ``'-'`` or ``'solid'``                                   solid line
+      ``'--'`` or ``'dashed'``                                 dashed line
+      ``'-.'`` or ``'dashdot'``                                dash-dotted line
+      ``':'`` or ``'dotted'``                                  dotted line
+      ``''`` or ``'none'`` (discouraged: ``'None'``, ``' '``)  draw nothing
+      =======================================================  ================
+"""
+_docstring.interpd.register(linestyle_doc=linestyle_doc)
+
 
 def _get_dash_pattern(style):
     """Convert linestyle to dash pattern."""
@@ -1183,6 +1196,7 @@ class Line2D(Artist):
         self._linewidth = w
         self._dash_pattern = _scale_dashes(*self._unscaled_dash_pattern, w)
 
+    @_docstring.interpd
     def set_linestyle(self, ls):
         """
         Set the linestyle of the line.
@@ -1194,15 +1208,7 @@ class Line2D(Artist):
 
             - A string:
 
-              =======================================================  ================
-              linestyle                                                description
-              =======================================================  ================
-              ``'-'`` or ``'solid'``                                   solid line
-              ``'--'`` or ``'dashed'``                                 dashed line
-              ``'-.'`` or ``'dashdot'``                                dash-dotted line
-              ``':'`` or ``'dotted'``                                  dotted line
-              ``''`` or ``'none'`` (discouraged: ``'None'``, ``' '``)  draw nothing
-              =======================================================  ================
+        %(linestyle_doc)s
 
             - A tuple describing the start position and lengths of dashes and spaces:
 
