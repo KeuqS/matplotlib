@@ -18,6 +18,7 @@ Linestyles can be specified in two ways:
   ``':'`` or ``'dotted'``                                  dotted line
   ``''`` or ``'none'`` (discouraged: ``'None'``, ``' '``)  draw nothing
   =======================================================  ================
+
 * **Parametrized linestyles**: a dash tuple ``(offset, (on_off_seq))``. For example,
   ``(0, (3, 10, 1, 15))`` means (3pt line, 10pt space, 1pt line, 15pt space) with no
   offset, while ``(5, (10, 3))``, means (10pt line, 3pt space), but skip the first
